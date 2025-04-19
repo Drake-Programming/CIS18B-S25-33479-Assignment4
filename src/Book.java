@@ -1,7 +1,7 @@
 public class Book {
-    private String title;
-    private String author;
-    private String genre;
+    private final String title;
+    private final String author;
+    private final String genre;
     private boolean isAvailable;
 
     public Book(String title, String author, String genre, boolean isAvailable) {
@@ -20,11 +20,17 @@ public class Book {
     }
 
     public void checkout() throws BookNotAvailableException {
-        // TODO: Throw exception if book is not available
+        if (!isAvailable) {
+            throw new BookNotAvailableException("Book is not available");
+        }
+
+        isAvailable = false;
     }
 
     public void returnBook() {
-        // TODO: Mark book as available
+        if (!isAvailable) {
+            isAvailable = true;
+        }
     }
 
     public String getGenre() {
