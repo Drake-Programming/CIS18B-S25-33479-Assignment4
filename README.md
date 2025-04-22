@@ -1,4 +1,4 @@
-## CIS18B-S25-33479 Assignment 3
+## CIS18B-S25-33479 Assignment 4
 
 ### Overview
 This repository contains Java source code for Assignment 4 of the CIS18B (Spring 2025) course. The project demonstrates various object-oriented programming principles, including:
