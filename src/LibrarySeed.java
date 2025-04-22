@@ -1,7 +1,17 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Provides a static method to generate a predefined list of sample books
+ * for testing and demonstration purposes.
+ */
 public class LibrarySeed {
+
+    /**
+     * Creates and returns a list of sample books categorized by various genres.
+     *
+     * @return a List of Book objects representing sample data
+     */
     public static List<Book> createSampleBooks() {
         List<Book> books = new ArrayList<>();
 
@@ -33,13 +43,12 @@ public class LibrarySeed {
         books.add(new Book("Gravebound",             "Mara Doyle",            "Horror"));
         books.add(new Book("Beneath Black Pines",    "Jasper Rook",           "Horror"));
 
-        // ===== Non‑Fiction =====
-        books.add(new Book("Decoding the Cosmos",    "Dr. Aria Patel",        "Fiction"));
-        books.add(new Book("Machines That Learn",    "Colin Vargas",          "Fiction"));
-        books.add(new Book("History of Forgotten Empires",
-                "Selena Duarte",  "Fiction"));
-        books.add(new Book("The Art of Resilience",  "Milo Shepherd",        "Fiction"));
-        books.add(new Book("Mindful Engineering",    "Yara Fulton",          "Fiction"));
+        // ===== Non-Fiction =====
+        books.add(new Book("Decoding the Cosmos",    "Dr. Aria Patel",        "Non-Fiction"));
+        books.add(new Book("Machines That Learn",    "Colin Vargas",          "Non-Fiction"));
+        books.add(new Book("History of Forgotten Empires", "Selena Duarte",   "Non-Fiction"));
+        books.add(new Book("The Art of Resilience",  "Milo Shepherd",         "Non-Fiction"));
+        books.add(new Book("Mindful Engineering",    "Yara Fulton",           "Non-Fiction"));
 
         return books;
     }

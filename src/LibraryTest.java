@@ -1,15 +1,23 @@
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Provides a test program demonstrating the use of LibraryCollection, LibraryUser,
+ * and various library operations such as searching, checking out, and returning books.
+ */
 public class LibraryTest {
+
+    /**
+     * Main method to run the library application.
+     *
+     * @param args command-line arguments
+     */
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
 
         LibraryCollection library = new LibraryCollection();
-        LibrarySeed seed = new LibrarySeed();
-        List<Book> bookSeed = seed.createSampleBooks();
+        List<Book> bookSeed = LibrarySeed.createSampleBooks();
         boolean programRunning = true;
         LibraryUser libraryUser = new LibraryUser();
         int choice;
@@ -18,10 +26,12 @@ public class LibraryTest {
         Book userBook;
         GenreIterator gIterator;
 
+        // Add predefined books to the library collection
         for (Book seedBook : bookSeed) {
             library.addBook(seedBook);
         }
 
+        // User registration
         System.out.print("Hello new user! Please enter your username: ");
         libraryUser.setUsername(scanner.next());
 
@@ -29,7 +39,7 @@ public class LibraryTest {
 
         try {
             do {
-                System.out.println("\nPlease choose an option " + libraryUser.getUsername() +"\n\n" +
+                System.out.println("\nPlease choose an option " + libraryUser.getUsername() + "\n\n" +
                         "1. Search Book by Title\n" +
                         "2. Search Book by Genre\n" +
                         "3. Return Book by Title\n" +
@@ -39,35 +49,23 @@ public class LibraryTest {
 
                 switch (choice) {
                     case 1:
-                        try {
-                            scanner.nextLine();
-                            System.out.print("Enter book title: ");
-                            title = scanner.nextLine();
-                        } catch (java.util.InputMismatchException ime) {
-                            System.out.println("\nInput only String values\n");
-                            scanner.nextLine();
-                            continue;
-                        }
+                        scanner.nextLine(); // Consume leftover newline
+                        System.out.print("Enter book title: ");
+                        title = scanner.nextLine();
 
                         userBook = library.searchBook(title);
                         System.out.println("Would you like to checkout " + userBook.getTitle() + "?");
                         System.out.println("1. Yes\n2. No\n");
                         System.out.print("Enter your choice: ");
 
-                        try {
-                            choice = scanner.nextInt();
-                        } catch (java.util.InputMismatchException ime) {
-                            System.out.println("\nInput only numeric values\n");
-                            scanner.nextLine();
-                            break;
-                        }
+                        choice = scanner.nextInt();
                         if (choice == 1) {
                             library.checkoutBook(userBook, libraryUser);
                         }
                         break;
                     case 2:
                         System.out.println("Available genres:\n");
-                        for (String bookGenre: library.getGenreKeys()) {
+                        for (String bookGenre : library.getGenreKeys()) {
                             System.out.println("\t" + bookGenre);
                         }
                         System.out.print("\nEnter book genre: ");
@@ -80,10 +78,10 @@ public class LibraryTest {
                         }
                         break;
                     case 3:
+                        scanner.nextLine(); // Consume leftover newline
                         System.out.print("Enter book you would like to return: ");
-                        title = scanner.next();
+                        title = scanner.nextLine();
                         library.returnBook(library.searchBook(title), libraryUser);
-                        scanner.nextLine();
                         break;
 
                     case 4:
@@ -92,8 +90,7 @@ public class LibraryTest {
                         break;
 
                     default: // Handle invalid menu choices
-                        System.out.println("Invalid choice, please select 1, 2, or 3.");
-
+                        System.out.println("Invalid choice, please select a valid option.");
                 }
 
             } while (programRunning);
