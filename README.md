@@ -14,7 +14,7 @@ The project models a simple library where a user can:
 To copy this project, use the following command:
 
 ```bash
-git clone https://github.com/YourUsername/CIS18B-S25-33479-Assignment4.git
+git clone https://github.com/Drake-Programming/CIS18B-S25-33479-Assignment4.git
 ```
 
 ### Running the Project
